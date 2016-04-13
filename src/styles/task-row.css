@@ -1,0 +1,30 @@
+.task-desc {
+	padding: 10px;
+	margin: 10px;
+	width:calc(100% - 335px);
+	min-width: 200px;
+	display: inline-block;
+}
+
+.task-rate {
+	padding: 10px;
+	margin: 10px;
+	width: 120px;
+	min-width: 100px;
+	display: inline-block;
+	text-align: center;
+}
+
+.start-btn {
+	padding: 7px;
+	font-size: 18px;
+	margin: 10px;
+	width: 115px;
+	border-radius: 5px;
+	border: none;
+	height: 40px;
+	cursor: pointer;
+	outline: none;
+	color: white;
+	background-color: #3F3F3F;
+}

@@ -1,0 +1,18 @@
+.app {
+	top: 50px;
+    left: 20%;
+    position: absolute;
+    padding: 20px;
+    width: 60%;
+    font-family: sans-serif;
+}
+
+.app-container {
+	padding: 10px;
+	border: solid 1px #eee;
+	border-radius: 5px;
+}
+
+.app-title {
+    text-align: center;
+}
