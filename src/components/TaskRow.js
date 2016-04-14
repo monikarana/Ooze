@@ -1,21 +1,38 @@
 import React from 'react';
 import '../styles/task-row.css';
+import fecha from 'fecha';
+
+const createPeriod = (task) => {
+	return {
+		taskId: task.id,
+		start: fecha.format(new Date(), 'YYYY-DD-MM HH:mm:ss')
+	};
+};
 
 const TaskRow = (props) => {
 	const task = props.task;
+	const isActive = props.isActive;
 
-	const startTimer = () => {
-		console.log('test');
-	}
+	const addPeriod = (event) => {		
+		const newPeriod = createPeriod(task);
+
+		props.onStartPeriod(newPeriod);
+	};
+
 	return (
-		<div>
+		<div className={isActive ? 'active-task-row' : ''}>
 			<span className='task-desc'>
 				{task.description}
 			</span>
 			<span className='task-rate'>
 				{task.taskRate}
 			</span>
-			<button className='start-btn' onClick={startTimer}>Start</button>
+			<input 
+				className='start-btn' 
+				onClick={addPeriod} 
+				type='button' 
+				value={isActive ? 'Stop' : 'Start'} 
+			/>
 		</div>
 		)
 }

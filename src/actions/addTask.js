@@ -1,7 +1,7 @@
-import _ from 'lodash';
-
 export default (state, task) => {
-		const id = state.lastTaskId + 1;
+	const lastId = state.lastTaskId || 0;
+
+	const id = lastId + 1;
 
 		task.id = id;
 		state.lastTaskId = id;

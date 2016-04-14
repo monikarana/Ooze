@@ -3,6 +3,7 @@ import _ from 'lodash';
 import CreateTask from '../components/CreateTask';
 import '../styles/app.css';
 import addTask from '../actions/addTask';
+import addPeriod from '../actions/addPeriod';
 import TaskRow from '../components/TaskRow';
 
 class App extends React.Component {
@@ -12,8 +13,9 @@ class App extends React.Component {
 		this.state = {
 			tasks: [],
 			periods: [],
-			lastTaskId: 0,
-			lastPeriodId: 0
+			lastTaskId: null,
+			lastPeriodId: null,
+			activeTaskId: null
 		};
 	}
 
@@ -25,8 +27,13 @@ class App extends React.Component {
 		const nextState = addTask(this.state, task);
 
 		this.updateSate(nextState);
-		console.log('task entered', this.state);
 	};
+
+	handleStartPeriod = (period) => {
+		const nextState = addPeriod(this.state, period);
+
+		this.updateSate(nextState);
+	}
 
 	render () {
 			const tasks = this.state.tasks;
@@ -42,9 +49,11 @@ class App extends React.Component {
 					/>
 					{_.map(tasks, (task) => {
 						return (
-								<TaskRow 
+								<TaskRow
+									isActive={this.state.activeTaskId === task.id} 
 									task={task}
 									key={task.id}
+									onStartPeriod={this.handleStartPeriod}
 								/>
 							)
 					})
