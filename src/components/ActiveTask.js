@@ -11,8 +11,6 @@ const ActiveTask = (props) => {
 		return !period.end;
 	});
 
-	console.log(activePeriod);
-
 	return (
 		<div className='active-task-info-row'>
 			<span className='working-on-label'>Working on</span>

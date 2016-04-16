@@ -52,8 +52,8 @@ class App extends React.Component {
 
 		return (
 			<div className='app'>
-				<div className='app-title'>
-					<h1>Ooze</h1>
+				<div className={this.state.activeTaskId ? 'app-title-active-task' : 'app-title'}>
+					Ooze
 				</div>
 				<div className='app-container'>
 					{ this.state.activeTaskId ? 
