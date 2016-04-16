@@ -5,6 +5,7 @@ import '../styles/app.css';
 import addTask from '../actions/addTask';
 import addPeriod from '../actions/addPeriod';
 import TaskRow from '../components/TaskRow';
+import ActiveTask from '../components/ActiveTask';
 
 class App extends React.Component {
 	constructor (props) {
@@ -25,7 +26,7 @@ class App extends React.Component {
 
 	handleCreateTask = (task) => {
 		const nextState = addTask(this.state, task);
-
+		
 		this.updateSate(nextState);
 	};
 
@@ -33,10 +34,21 @@ class App extends React.Component {
 		const nextState = addPeriod(this.state, period);
 
 		this.updateSate(nextState);
-	}
+	};
+
+	getTaskById = (taskId) => {
+		return this.state.tasks[taskId - 1];
+	};
+
+	getPeriodsForTask = (taskId) => {
+		return _.filter(this.state.periods, (period) => {
+			return period.taskId === taskId;
+		});
+	};
 
 	render () {
-			const tasks = this.state.tasks;
+		const tasks = this.state.tasks;
+		const activeTaskId = this.state.activeTaskId;
 
 		return (
 			<div className='app'>
@@ -44,6 +56,12 @@ class App extends React.Component {
 					<h1>Ooze</h1>
 				</div>
 				<div className='app-container'>
+					{ this.state.activeTaskId ? 
+						<ActiveTask 
+							task={this.getTaskById(activeTaskId)}
+							periods={this.getPeriodsForTask(activeTaskId)}
+						/> :
+						null}
 					<CreateTask
 						handleCreateTask = {this.handleCreateTask}
 					/>

@@ -13,7 +13,7 @@ const TaskRow = (props) => {
 	const task = props.task;
 	const isActive = props.isActive;
 
-	const addPeriod = (event) => {		
+	const addPeriod = () => {		
 		const newPeriod = createPeriod(task);
 
 		props.onStartPeriod(newPeriod);
@@ -31,7 +31,7 @@ const TaskRow = (props) => {
 				className='start-btn' 
 				onClick={addPeriod} 
 				type='button' 
-				value={isActive ? 'Stop' : 'Start'} 
+				value={isActive ? 'Stop' : 'Start'}
 			/>
 		</div>
 		)

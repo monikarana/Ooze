@@ -25,9 +25,9 @@ const CreateTask = (props) => {
 	}
 
 	return (
-		<div >
+		<div className='create-task-row'>
 			<span>
-				<input  id='task-desc'  className='desc-input' type='text' placeholder='Enter task description' />
+				<input id='task-desc'  className='desc-input' type='text' placeholder='Enter task description' />
 			</span>
 			<span>
 				<input id='task-rate' className='rate-input' type='number' placeholder='Enter hourly rate' />

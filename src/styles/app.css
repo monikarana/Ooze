@@ -2,13 +2,14 @@
 	top: 50px;
     left: 20%;
     position: absolute;
-    padding: 20px;
+    padding: 0;
     width: 60%;
     font-family: sans-serif;
 }
 
 .app-container {
-	padding: 10px;
+    position: relative;
+	padding: 0;
 	border: solid 1px #eee;
 	border-radius: 5px;
 }
