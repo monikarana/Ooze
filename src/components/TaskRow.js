@@ -5,7 +5,7 @@ import fecha from 'fecha';
 const createPeriod = (task) => {
 	return {
 		taskId: task.id,
-		start: fecha.format(new Date(), 'YYYY-DD-MM HH:mm:ss')
+		start: fecha.format(new Date(), 'YYYY-MM-DD HH:mm:ss')
 	};
 };
 
