@@ -6,6 +6,8 @@ import addTask from '../actions/addTask';
 import addPeriod from '../actions/addPeriod';
 import TaskRow from '../components/TaskRow';
 import ActiveTask from '../components/ActiveTask';
+import getClockForPeriod from '../actions/getClockForPeriod';
+import resetClock from '../actions/resetClock';
 
 class App extends React.Component {
 	constructor (props) {
@@ -16,25 +18,50 @@ class App extends React.Component {
 			periods: [],
 			lastTaskId: null,
 			lastPeriodId: null,
-			activeTaskId: null
+			activeTaskId: null,
+			clockMinutes: 0
 		};
 	}
 
-	updateSate = (nextState) => {
+	updateState = (nextState) => {
 		this.setState(nextState);
 	}
 
 	handleCreateTask = (task) => {
 		const nextState = addTask(this.state, task);
 		
-		this.updateSate(nextState);
+		this.updateState(nextState);
 	};
 
 	handleStartPeriod = (period) => {
 		const nextState = addPeriod(this.state, period);
 
-		this.updateSate(nextState);
+		if (nextState.activeTaskId) {
+			this.stopClockInterval();
+			this.startClockInterval(period);
+		} else {
+			this.stopClockInterval();
+		}
+
+		this.updateState(nextState);
 	};
+
+	startClockInterval = (period) => {
+		this.clockInterval = setInterval(() => {
+			console.log('Running interval');
+			const nextState = getClockForPeriod(this.state, period);
+			this.updateState(nextState);
+		}, 1000 * 60);
+	};
+
+	stopClockInterval = () => {
+		if (this.clockInterval) {
+			clearInterval(this.clockInterval);
+			
+			const nextState = resetClock(this.state);
+			this.updateState(nextState);
+		}
+	}
 
 	getTaskById = (taskId) => {
 		return this.state.tasks[taskId - 1];
@@ -60,6 +87,7 @@ class App extends React.Component {
 						<ActiveTask 
 							task={this.getTaskById(activeTaskId)}
 							periods={this.getPeriodsForTask(activeTaskId)}
+							clockMinutes={this.state.clockMinutes}
 						/> :
 						null}
 					<CreateTask

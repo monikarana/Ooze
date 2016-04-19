@@ -7,11 +7,14 @@ export default (state, period) => {
 	if (state.lastPeriodId) {
 		const lastPeriod = state.periods[lastPeriodId - 1];
 
-		lastPeriod.end = fecha.format(new Date(), 'YYYY-MM-DD HH:mm:ss');
+		if(!lastPeriod.end) {
+			lastPeriod.end = fecha.format(new Date(), 'YYYY-MM-DD HH:mm:ss');
+		}
 	} 
 
 	if (state.activeTaskId === period.taskId) {
 		state.activeTaskId =  null;
+
 		return state; 
 	}
 
