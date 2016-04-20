@@ -24,5 +24,6 @@ npm start
 - Planing to use Immutable and Redux
 
 ### Features
+- Store task entered and time spent on tasks in local storage.
 - Add money earned based on time spent on particular task.
 - Show total of all money earned so far in all tasks. 
