@@ -1,0 +1,40 @@
+.active-task-info-row {
+	border-radius: 5px;
+	background-color: #eee;
+	border-bottom-left-radius: 0;
+	border-bottom-right-radius: 0;
+	overflow: hidden;
+}
+
+.working-on-label {
+	position: absolute;
+    top: 0;
+    left: 0;
+    padding: 3px 10px;
+    font-size: 12px;
+    background: #3f3f3f;
+    color: #fff;
+    border-bottom-right-radius: 5px;
+}
+
+.active-task-desc {
+	width: auto;
+    display: inherit;
+    padding: 30px 15px 10px;
+    margin: 0;
+    font-size: 23px;
+    text-transform: capitalize;
+    width: calc(100% - 210px);
+    float: left;
+}
+
+.active-task-details {
+	padding: 10px 15px 10px;
+	width: 150px;
+	float: right;
+}
+
+.active-task-clock {
+	font-size: 32px;
+}
+

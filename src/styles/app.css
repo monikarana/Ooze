@@ -1,0 +1,30 @@
+.app {
+    margin: 40px auto;
+    position: relative;
+    padding: 0;
+    width: 60%;
+    font-family: sans-serif;
+}
+
+.app-container {
+    position: relative;
+	padding: 0;
+	border: solid 1px #eee;
+	border-radius: 5px;
+}
+
+.app-title {
+    text-align: center;
+    font-size: 55px;
+    font-weight: 600;
+    padding-top: 40px;
+    padding-bottom: 35px;
+}
+
+.app-title-active-task {
+    text-align: center;
+    padding-top: 0px;
+    font-size: 43px;
+    font-weight: 600;
+    padding-bottom: 15px;
+}
